@@ -1,3 +1,3 @@
 # Procfile
 
-web: gunicorn [web_leb].wsgi --log-file -
+web: gunicorn web_leb.wsgi --log-file -
