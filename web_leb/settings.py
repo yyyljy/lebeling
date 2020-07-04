@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY') # 기존에 있던 시크릿 Key는 잘래내�
 DEBUG = config('DEBUG')
 #DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lebeling.herokuapp.com']
 
 
 # Application definition
