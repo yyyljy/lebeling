@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from decouple import config
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,10 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y_+!d3s=t@33r=91_a)wo+e3eof_a!%d+bg_(4x@ucescr&4!m'
+#SECRET_KEY = 'y_+!d3s=t@33r=91_a)wo+e3eof_a!%d+bg_(4x@ucescr&4!m'
+SECRET_KEY = config('SECRET_KEY') # 기존에 있던 시크릿 Key는 잘래내서 .env에 붙여 넣는다.
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
+#DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -134,7 +138,10 @@ MEDIA_URL = '/media/' # 이미지 불러오는 경로
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 이미지 저장 경로
 
 # STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 AUTH_USER_MODEL = 'accounts.User'
 
 RANDOM_IMAGE_DIR = 'images/static/images/'
+
+django_heroku.settings(locals())
